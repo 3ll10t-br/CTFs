@@ -70,21 +70,71 @@ Ao executar a tool não tive sucesso. Pois, embora sendo uma imagem, não estava
 Criei uma cópia do arquivo com uma extensão válida para executar no **``stegcracker``** e rodei novamente. <br>
 Encontrado a password ``mankeysdeda`` e um output do arquivo em **``flag01.jpeg.out.``** <br>
 
+<div align="center">
+<img src="https://user-images.githubusercontent.com/108879046/236550658-d6360d7e-9ee5-4ac5-82ab-711d4e06d544.png" width="700px" />
+</div> <br>
+
+Visualizando o arquivo, foi possível pegar uma dica para acessar um diretório, o que trouxe à flag e um arquivo para download. <br>
 
 
+<div align="center">
+<img src="https://user-images.githubusercontent.com/108879046/236550918-acfe834c-de0a-4cb9-8365-52405c316560.png" width="700px" />
+</div> <br>
+
+<div align="center">
+<img src="https://user-images.githubusercontent.com/108879046/236550969-2a4f8ad1-6c2f-42a6-898c-27b57f91ca2c.png" width="700px" />
+</div> <br>
+
+```makefile
+flag{e5f8f939ee3273255464223f6b31a612}
+```
+<br>
+
+Após capturar a flag, o próximo passo foi descompactar o ``file.tar.gz``. O qual trouxe 04 ``arquivos.data``. <br>
+
+<div align="center">
+<img src="https://user-images.githubusercontent.com/108879046/236551338-729f1cda-e308-4dcd-817c-e1db9fcf87a1.png" width="700px" />
+</div> <br>
+
+Ao executar o file ``<file.data>``, foi possível identificar que o primeiro arquivo na verdade tratava-se de um PDF. <br>
 
 
+<div align="center">
+<img src="https://user-images.githubusercontent.com/108879046/236551578-49ff640a-0b3c-44a0-af50-5e257baa4f92.png" width="700px" />
+</div> <br>
 
+<div align="center">
+<img src="https://user-images.githubusercontent.com/108879046/236551617-735ab62c-b6f9-4e6d-a94c-3525d4cba156.png" width="700px" />
+</div> <br>
 
+<div align="center">
+<img src="https://user-images.githubusercontent.com/108879046/236551677-5ffeb056-d7d3-41f3-a747-cced1aa4b4d6.png" width="700px" />
+</div> <br>
 
+Como não foi possível visualizar o PDF, tentei o mesmo procedimento feito na flag anterior. Criei uma cópia do ``file.data`` para file.pdf. <br>
 
+<div align="center">
+<img src="https://user-images.githubusercontent.com/108879046/236552307-71ff4cc5-5a89-43e8-82bd-2f35b64dd1cd.png" width="700px" />
+</div> <br>
 
+<div align="center">
+<img src="https://user-images.githubusercontent.com/108879046/236552542-55a4e290-d4a3-4785-94e2-a681f724e8f3.png" width="700px" />
+</div> <br>
 
+Mesmo assim não foi possível visualizar. Entre algumas tentativas de tools no Kali sem sucesso, recorri a um conhecido site que faz diversos processos em arquivos, entre eles "repair" reparar, principalmente PDFs.
+Fiz upload do "file.pdf" para o site, com a opção de "repair" recuperar o arquivo. Após a conclusão do processo, realizei o download e foi possível visualizar a string oculta no arquivo indicando o caminho da flag. <br>
 
+<div align="center">
+<img src="https://user-images.githubusercontent.com/108879046/236553138-03053357-fa84-4361-970d-07c74812a194.png" width="700px" />
+</div> <br>
 
+## [Mr Robot] <br>
 
+<div align="center">
+<img src="https://user-images.githubusercontent.com/108879046/236553488-e9b6324a-49ab-46e2-a938-895708892fe2.png" width="700px" />
+</div> <br>
 
-
-
-
+<div align="center">
+<img src="https://user-images.githubusercontent.com/108879046/236553605-0980f8fd-cb8d-4614-9388-990f707763a3.png" width="700px" />
+</div> <br>
 
