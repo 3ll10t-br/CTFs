@@ -22,4 +22,14 @@ Encontrei o diretório ``/dashboard``, onde finalmente entrei no game e criei me
 <img src="https://user-images.githubusercontent.com/108879046/236532378-4a91a16a-a647-438f-a087-7a83c3c8831a.jpg" width="250px" />
 </div> <br>
 
+<div align="center">
+<img src="https://user-images.githubusercontent.com/108879046/236534287-0e7b366d-5e18-406e-a004-9cdca3ddb8e2.png" width="700px" />
+</div> <br>
+
+Outro diretório interessante foi o ``/secret``, o qual trouxe a primeira flag e um link para download de um arquivo. Detalhe, a flag estava oculta na página hehe. <br>
+
+<div align="center">
+<img src="https://user-images.githubusercontent.com/108879046/236534755-79785c24-f36c-45c5-8439-f5666fc67fd8.png" width="700px" />
+</div> <br>
+
 
