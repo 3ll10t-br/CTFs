@@ -1,7 +1,6 @@
-body {
-  background-color: #212121;
-  color: #ffffff;
-}
+<head>
+  <link rel="stylesheet" href="style.css">
+</head>
 
 # [CTF_EscapeTheHack] <br>
 
