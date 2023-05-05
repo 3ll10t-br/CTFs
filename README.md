@@ -2,8 +2,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 
-## Summary
-# ctf_escapethehack
+## ctf_escapethehack
 # basicpentesting
 
 # [CTF_EscapeTheHack] <br>
