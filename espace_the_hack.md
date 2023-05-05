@@ -2,9 +2,6 @@
   <link rel="stylesheet" href="style.css">
 </head>
 
-## ctf_escapethehack
-## mr-robot
-
 # [CTF_EscapeTheHack] <br>
 
 ``CTF - BesidesSP 2022 17th edition`` <br>
