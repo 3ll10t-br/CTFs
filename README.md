@@ -1,3 +1,8 @@
+body {
+  background-color: #212121;
+  color: #ffffff;
+}
+
 # [CTF_EscapeTheHack] <br>
 
 ``CTF - BesidesSP 2022 17th edition`` <br>
