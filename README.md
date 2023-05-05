@@ -5,7 +5,6 @@
 # CTFs <br>
 
 ## [CTF_EscapeTheHack] <br>
-## [Mr Robot] <br>
 
 ``CTF - BesidesSP 2022 17th edition`` <br>
 
@@ -129,7 +128,7 @@ Fiz upload do "file.pdf" para o site, com a opção de "repair" recuperar o arqu
 <img src="https://user-images.githubusercontent.com/108879046/236553138-03053357-fa84-4361-970d-07c74812a194.png" width="700px" />
 </div> <br>
 
-# [Mr Robot] <br>
+## [Mr Robot] <br>
 
 <div align="center">
 <img src="https://user-images.githubusercontent.com/108879046/236553488-e9b6324a-49ab-46e2-a938-895708892fe2.png" width="700px" />
