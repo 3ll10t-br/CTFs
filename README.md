@@ -58,7 +58,7 @@ Analisando o arquivo, foi possível identificar o formato e uma dica comentada. 
 <img src="https://user-images.githubusercontent.com/108879046/236549006-a4dbc852-6db7-465c-851f-886096ce71e1.png" width="700px" />
 </div> <br>
 
-Tratando-se de uma imagem, podemos imaginar que tenha algo relacionado a ``esteganografia``. Para isso, entre as opções, temos uma tool chamada ``stegcracker``,
+Tratando-se de uma imagem, podemos imaginar que tenha algo relacionado a **``esteganografia``**. Para isso, entre as opções, temos uma tool chamada **``stegcracker``**,
 na qual é possível fazer um brute-force para encontrar informações ocultas na imagem, combinando ``stegcrakcer + wordlist``. <br>
 
 Ao executar a tool não tive sucesso. Pois, embora sendo uma imagem, não estava com a extensão jpg, jpeg ou algum outro formato que a tool identificasse ser uma imagem. <br>
@@ -67,8 +67,8 @@ Ao executar a tool não tive sucesso. Pois, embora sendo uma imagem, não estava
 <img src="https://user-images.githubusercontent.com/108879046/236549453-676a63b0-e250-4a1d-8530-5662d48fbec4.png" width="700px" />
 </div> <br>
 
-Criei uma cópia do arquivo com uma extensão válida para executar no ``stegcracker`` e rodei novamente. <br>
-Encontrado a password ``mankeysdeda`` e um output do arquivo em ``flag01.jpeg.out.`` <br>
+Criei uma cópia do arquivo com uma extensão válida para executar no **``stegcracker``** e rodei novamente. <br>
+Encontrado a password ``mankeysdeda`` e um output do arquivo em **``flag01.jpeg.out.``** <br>
 
 
 
