@@ -3,7 +3,6 @@
 </head>
 
 ## ctf_escapethehack
-# basicpentesting
 
 # [CTF_EscapeTheHack] <br>
 
