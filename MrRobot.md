@@ -1,4 +1,4 @@
-## [Mr-Robot] <br>
+# [Mr-Robot] <br>
 
 <div align="center">
 <img src="https://user-images.githubusercontent.com/108879046/236553488-e9b6324a-49ab-46e2-a938-895708892fe2.png" width="700px" />
