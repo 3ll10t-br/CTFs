@@ -1,12 +1,12 @@
-<table border="0">
-    <tr>
-        <td>
-
 <head>
   <link rel="stylesheet" href="style.css">
 </head>
 
 # [CTF_EscapeTheHack] <br>
+
+<table border="0">
+    <tr>
+        <td>
 
 ``CTF - BesidesSP 2022 17th edition`` <br>
 
@@ -237,7 +237,58 @@ Indo atrás do UPX, encontrei uma tool ``upx-ucl`` a qual executei para fazer o 
 <div align="center">
 <img src="https://user-images.githubusercontent.com/108879046/236595185-1b904236-1654-4c12-a791-08cf87272c7f.png" width="700px" />
 </div> <br>
+
+Após o decompress do file.exe, executei ```strings`` novamente, o que trouxe algumas strings aparentemente sendo hashes, e sim, algumas “flags” falsas hehe. <br>
+
+```makefile
+A partir desse ponto fiquei sem recursos...sendo esse o último desafio, essa "última flag" veio após a resolução em live com o desenvolvedor do CTF.
+```
+<br>
             
-        </td>
+Analisando as hashes é possível perceber que apenas uma difere das demais. “Foi difícil perceber esse detalhe em meio a tantas hashes, após horas fazendo o CTF 😅 ”. Algumas hashes até traziam strings dizendo...“aqui não tem nada” haha...anyway. <br>
+
+<div align="center">
+<img src="https://user-images.githubusercontent.com/108879046/236595627-a3a40410-5b87-496b-9972-8e3451b794e2.png" width="700px" />
+</div> <br>            
+            
+<div align="center">
+<img src="https://user-images.githubusercontent.com/108879046/236595633-96275985-9c0b-4ac5-984e-d3b359fe0eb4.png" width="700px" />
+</div> <br>   
+
+Pegando a hash selecionada, identificamos estar em Base64. <br>
+
+<div align="center">
+<img src="https://user-images.githubusercontent.com/108879046/236595693-4e27cb13-ea48-4e70-8683-495e217fef73.png" width="700px" />
+</div> <br>             
+ 
+Resultado: <br>
+<div align="center">
+<img src="https://user-images.githubusercontent.com/108879046/236595734-d2489fa7-37ab-44ac-a974-1d4c344935e8.png" width="700px" />
+</div> <br>
+            
+A próxima etapa foi decifrar a hash em “Cifras de César” com shift 6. Executando alguns comandos em Python, obtivemos o resultado.
+
+```makefile
+python3
+msg = "<your_cipher_here>"
+for i in range(len(msg)):
+		print(chr(ord(msg[i]) - 6), end='')
+```            
+<div align="center">
+<img src="https://user-images.githubusercontent.com/108879046/236595808-01ece563-bd33-4fe1-962e-360ae36464a1.png" width="700px" />
+</div> <br>
+            
+Retornamos ao ``file.exe`` que anteriormente foi feito o decompress, ``chmod +x file.exe`` para dar permissão e ``./file.exe`` para executar.<br> 
+O programa pede para digitar a chave para descriptografar os dados, que nesse caso é a chave decifrada anteriormente com python, o que trouxe à última flag, finalizando o CTF.<br>
+            
+<div align="center">
+<img src="https://user-images.githubusercontent.com/108879046/236595994-8231f48d-1f22-45ba-ba0b-d8ff2001c375.png" width="700px" />
+</div> <br>
+            
+Realizei 4 dos 5 desafios, chegando a metade do último, o qual tivemos a resolução posteriormente, mas fico feliz de ter conseguido chegar até esse ponto. <br> 
+Em resumo, foi um ótimo aprendizado. <br>
+          
+``<y0uC4n’tSt0pUs4ll>``
+      </td>
     </tr>
-</table>
+</table>            
