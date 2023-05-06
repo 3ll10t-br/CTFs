@@ -87,19 +87,81 @@ https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell
 ```
 
 <div align="center">
-<img src="" width="700px" />
+<img src="https://user-images.githubusercontent.com/108879046/236587795-7fb9a007-4160-4f4e-850f-6bece0e05985.png" width="700px" />
 </div> <br>
+
+Após trocar o IP e PORTA, abri um nc na minha máquina. <br>
 
 <div align="center">
-<img src="" width="700px" />
+<img src="https://user-images.githubusercontent.com/108879046/236587923-fed3122f-dfe3-4e8c-8f3f-efcf47f49dfa.png" width="700px" />
 </div> <br>
+
+- nc listening na minha máquina
+- payload.php dentro do 404 Template no alvo configurado com meu IP e porta <br>
+
+Direcionei a navegação para o caminho do 404 Template. <br>
 
 <div align="center">
-<img src="" width="700px" />
+<img src="https://user-images.githubusercontent.com/108879046/236588354-b4addd4b-d5c7-4e85-816f-798742e46f9f.png" width="700px" />
 </div> <br>
 
-
+Shell! <br>
 
 <div align="center">
-<img src="" width="700px" />
+<img src="https://user-images.githubusercontent.com/108879046/236588811-125111c1-d614-4935-9dc5-d7d9a3b057cf.png" width="700px" />
 </div> <br>
+
+A partir desse momento eu pensei em fazer uma busca por: <br>
+
+- ``search -f *.txt``
+- ``search -f *.key``
+<br>
+Mas optei por entrar em alguns diretórios e ver o que encontrava por lá. Em um desses diretórios, encontrei um usuário, o qual tinha dois arquivos.
+Um dos arquivos - permissão negada, o outro arquivo trouxe as credenciais em hash. <br>
+
+<div align="center">
+<img src="https://user-images.githubusercontent.com/108879046/236589799-8623d41f-634e-49e2-99cf-a013cca47f7c.png" width="700px" />
+</div> <br>
+
+Poderia ter quebrado a hash com hashcat ou john, mas por questão de tempo, optei por nossa querida crackstation ``https://crackstation.net/``.
+
+<div align="center">
+<img src="https://user-images.githubusercontent.com/108879046/236590792-c7cc3b9f-a021-4a8e-a153-d30c7151bd1b.png" width="700px" />
+</div> <br>
+
+Após quebrar a hash e descobrir a senha do usuário (now u see 😅), foi possível dar um cat no arquivo negado anteriormente, e pegar a segunda key.
+
+<div align="center">
+<img src="https://user-images.githubusercontent.com/108879046/236590836-6ad528b1-c527-49f6-b952-a8d8d2319084.png" width="700px" />
+</div> <br>
+
+Após pegar a segunda key, tentei acessar outro diretório em busca da última key, porém o acesso foi negado, por falta de privilégios. <br>
+
+```makefile
+find / -perm -4000 2> /dev/null
+```
+<br>
+
+Para verificar quais os programas executáveis que estão ativos na máquina. Criando um gap para uma possível interação e escalação de privilégio. <br>
+
+<div align="center">
+<img src="https://user-images.githubusercontent.com/108879046/236590908-6756d003-7ab0-40e2-9afa-662df5ddb6c2.png" width="700px" />
+</div> <br>
+
+``https://gtfobins.github.io/``
+<br>
+
+Para encontrar o bypass referente ao executável identificado na etapa anterior ``find / -perm -4000 2> /dev/null``.
+<br>
+Executei o bypass, obtive a escalação de privilégios, e consequentemente pegando assim a terceira e última key que faltava.<br>
+
+<div align="center">
+<img src="https://user-images.githubusercontent.com/108879046/236590978-69ffb90d-bc35-44fc-a652-c8a96467a869.png" width="700px" />
+</div> <br>
+
+``<y0uC4n’tSt0pUs4ll/>``
+
+
+
+
+
