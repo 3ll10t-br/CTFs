@@ -1,3 +1,7 @@
+<table border="0">
+    <tr>
+        <td>
+
 <head>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -74,7 +78,6 @@ Encontrado a password ``mankeysdeda`` e um output do arquivo em **``flag01.jpeg.
 
 Visualizando o arquivo, foi possível pegar uma dica para acessar um diretório, o que trouxe à flag e um arquivo para download. <br>
 
-
 <div align="center">
 <img src="https://user-images.githubusercontent.com/108879046/236550918-acfe834c-de0a-4cb9-8365-52405c316560.png" width="700px" />
 </div> <br>
@@ -125,4 +128,9 @@ Fiz upload do "file.pdf" para o site, com a opção de "repair" recuperar o arqu
 <div align="center">
 <img src="https://user-images.githubusercontent.com/108879046/236553138-03053357-fa84-4361-970d-07c74812a194.png" width="700px" />
 </div> <br>
+
+          
+      </td>
+   </tr>
+</table>
 
