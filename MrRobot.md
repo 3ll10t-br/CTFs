@@ -1,3 +1,4 @@
+---
 # [Mr-Robot] <br>
 
 <div align="center">
@@ -160,8 +161,4 @@ Executei o bypass, obtive a escalação de privilégios, e consequentemente pega
 </div> <br>
 
 ``<y0uC4n’tSt0pUs4ll/>``
-
-
-
-
-
+---
