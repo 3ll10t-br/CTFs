@@ -1,7 +1,3 @@
-<head>
-  <link rel="stylesheet" href="style.css">
-</head>
-
 # [CTF_EscapeTheHack] <br>
 
 <table border="0">
@@ -288,7 +284,7 @@ O programa pede para digitar a chave para descriptografar os dados, que nesse ca
 Realizei 4 dos 5 desafios, chegando a metade do último, o qual tivemos a resolução posteriormente, mas fico feliz de ter conseguido chegar até esse ponto. <br> 
 Em resumo, foi um ótimo aprendizado. <br>
           
-``<y0uC4n’tSt0pUs4ll>``
+``<y0uC4n’tSt0pUs4ll/>``
       </td>
     </tr>
-</table>            
+</table>          
