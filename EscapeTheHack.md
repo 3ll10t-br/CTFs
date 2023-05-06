@@ -129,8 +129,115 @@ Fiz upload do "file.pdf" para o site, com a opção de "repair" recuperar o arqu
 <img src="https://user-images.githubusercontent.com/108879046/236553138-03053357-fa84-4361-970d-07c74812a194.png" width="700px" />
 </div> <br>
 
-          
-      </td>
-   </tr>
-</table>
+Outra opção, aprendida posteriormente seria da seguinte forma.
+``cat flag0* > flags.pdf``
 
+<div align="center">
+<img src="https://user-images.githubusercontent.com/108879046/236594406-aeab8f2b-7cf0-46ef-a8ea-39d1d23eb034.png" width="700px" />
+</div> <br> 
+            
+<div align="center">
+<img src="https://user-images.githubusercontent.com/108879046/236594443-c4ffe555-0b6d-4563-8ff9-1e7e36a47290.png" width="700px" />
+</div> <br>
+
+<div align="center">
+<img src="https://user-images.githubusercontent.com/108879046/236594454-e02c71ad-2b59-4d72-9faa-bf84d394fa96.png" width="700px" />
+</div> <br>
+
+Utizando a hash do PDF foi possível chegar ao objetivo. <br>
+            
+<div align="center">
+<img src="https://user-images.githubusercontent.com/108879046/236594482-5fa101c6-f54e-4fda-9c9b-d61bad1f2c20.png" width="700px" />
+</div> <br>
+
+``flag{c6e13a58698dc7a7169aea0a145e3313}``
+<br>
+            
+Seguindo uma linha de raciocínio após a dica fornecida: <br>
+```makefile
+A=65
+B=66
+C=67
+
+Veni, vidi, vici            
+```            
+<br>
+            
+Se temos A=65, após algumas pesquisas, foi possível identificar que se tratava da tabela ASCII a qual o 65 equivale a letra A. <br>
+            
+<div align="center">
+<img src="https://user-images.githubusercontent.com/108879046/236594595-b4e71f7c-adc5-4775-a039-30bd5ce7de4d.png" width="700px" />
+</div> <br>
+
+Porém, temos mais uma dica Veni, vidi, vici, uma famosa frase em latim supostamente dita por Júlio César. O que me fez ligar alguns pontos levando a “Cifras”. A princípio pensei em buscar por “Cifras de César”, mas mantendo as duas dicas, busquei por identificar a cifra, ao invés de focar em um tipo. <br>
+
+- Identificando a cifra. <br>            
+         
+<div align="center">
+<img src="https://user-images.githubusercontent.com/108879046/236594684-ce2637e9-300e-42ab-ae57-05b4b4cc82e5.png" width="700px" />
+</div> <br>
+
+O resultado fortaleceu a primeira dica dada anteriormente. Sendo assim, busquei quebrar a cifra com algum ASCII decoder.
+            
+<div align="center">
+<img src="https://user-images.githubusercontent.com/108879046/236594747-e1440a70-7bad-41df-bcc3-df59b46a81be.png" width="700px" />
+</div> <br>
+
+Recaptulando temos:
+
+```makefile
+6465687a67616c6f6f6b627420323436313531333434373332
+dehzgalookbt 246151344732
+```
+<br>
+
+Após horas tentando decifrar o resultado, algo sempre esteve muito intrigante, “quantidade de letras = quantidade de números”.
+Chegando a conclusão de fazer a seguinte tentativa, o que levou a flag e download de um arquivo. <br>
+            
+```makefile
+d + 2 = f 
+e + 4 = i
+h + 6 = n
+z + 1 = a
+g + 5 = l
+a + 1 = b
+l + 3 = o
+o + 4 = s
+o + 4 = s
+k + 7 = r
+b + 3 = e
+t + 2 = v
+
+finalbossrev            
+```            
+<br>
+
+<div align="center">
+<img src="https://user-images.githubusercontent.com/108879046/236594955-113f6ee6-846a-4300-ba94-df839b604048.png" width="700px" />
+</div> <br>
+
+O arquivo aparentemente seria executável no Windows, porém, ao analisar um pouco melhor com ``file <file.exe>`` é possível identificar que trata-se de um ``ELF``. 
+Ou seja, pulando a parte técnica, o arquivo pode ser executado no próprio Kali.
+            
+<div align="center">
+<img src="https://user-images.githubusercontent.com/108879046/236595028-447e5ac7-73e3-45ee-ab8b-df01ceffdb47.png" width="700px" />
+</div> <br>
+
+Após analisar o arquivo executando o comando ``string file.exe`` foi possível identificar que o mesmo foi comprimido com ``UPX`` que até então não era do meu conhecimento. <br>
+Indo atrás do UPX, encontrei uma tool ``upx-ucl`` a qual executei para fazer o ``decompress`` do file.exe. <br>
+
+<div align="center">
+<img src="https://user-images.githubusercontent.com/108879046/236595156-029af61d-fd8e-449d-bfd2-ebb0a1dc29de.png" width="700px" />
+</div> <br>
+         
+<div align="center">
+<img src="https://user-images.githubusercontent.com/108879046/236595167-035dfd45-de87-49f1-9e70-30b497be64ad.png" width="700px" />
+</div> <br>
+            
+<div align="center">
+<img src="https://user-images.githubusercontent.com/108879046/236595185-1b904236-1654-4c12-a791-08cf87272c7f.png" width="700px" />
+</div> <br>
+            
+        </td>
+    </tr>
+</table>
